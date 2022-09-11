@@ -40,3 +40,11 @@ resource "aws_s3_bucket_object" "s3-object" {
     source   = "data/${each.value}"
     content_type = "text/html"
 }
+
+#S3 VERSIONING
+resource "aws_s3_bucket_versioning" "s3-versioning" {
+  bucket = aws_s3_bucket.bucket-cp02.id
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
